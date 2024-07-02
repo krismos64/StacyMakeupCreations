@@ -32,9 +32,6 @@ class Creation
     #[ORM\Column(length: 255)]
     private ?string $video = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $link = null;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
@@ -111,18 +108,6 @@ class Creation
     public function setVideo(string $video): static
     {
         $this->video = $video;
-
-        return $this;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(string $link): static
-    {
-        $this->link = $link;
 
         return $this;
     }
