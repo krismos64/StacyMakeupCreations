@@ -139,6 +139,9 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4>À propos</h4>
+          {% if app.user and app.user.email %}
+          <p class="text-body-secondary">Bonjour {{ app.user.email }} !</p>
+          {% endif %}
           <p class="text-body-secondary">Explorez mes créations uniques, des looks de maquillage audacieux aux designs d'ongles élégants, et laissez-vous inspirer par la magie des couleurs et des textures. Chaque œuvre est réalisée avec amour, soin, et une touche de créativité pour vous offrir le meilleur de la beauté.</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
