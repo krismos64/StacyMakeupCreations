@@ -3,48 +3,54 @@
 namespace App\Controller;
 
 use App\Entity\Creation;
+use App\Repository\CreationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CreationController extends AbstractController
 {
-    #[Route('/creation/{id}', name: 'app_creation')]
-    public function index(EntityManagerInterface $entityManager, int $id): Response
+    #[Route('/creation/{slug}', name: 'app_creation_details')]
+    public function show(CreationRepository $creationRepository, string $slug): Response
     {
-        $product = $entityManager->getRepository(Creation::class)->find($id);
+        $creation = $creationRepository->findOneBySlug($slug);
 
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '. $id
-        );
-    }
-        return $this->render('creation/index.html.twig', [
-            'controller_name' => 'CreationController',
-            'name'=> $product->getName()
+        if (!$creation) {
+            throw $this->createNotFoundException('No creation found for slug ' . $slug);
+        }
+
+        return $this->render('creation/details.html.twig', [
+            'creation' => $creation,
         ]);
     }
+
+    #[Route('/creations', name: 'app_creation_index')]
+    public function index(CreationRepository $creationRepository): Response
+    {
+        $creations = $creationRepository->findAll();
+
+        return $this->render('creation/index.html.twig', [
+            'creations' => $creations,
+        ]);
+    }
+
+
 
     #[Route('/add-creation', name: 'create_creation')]
     public function createCreation(EntityManagerInterface $entityManager): Response
     {
-        $product = new Creation();
-        $product->setName('Makeup');
-        $product->setSlug('creation-makeup');
-        $product->setSubtitle('Lorem Ipsum');
-        $product->setDescription('Lorem Ipsum');
-        $product->setImage('logo5.png');
-        $product->setVideo('HHO6Ebmoe-o');
-        
+        $creation = new Creation();
+        $creation->setName('');
+        $creation->setSlug('');
+        $creation->setSubtitle('');
+        $creation->setDescription('');
+        $creation->setImage('');
+        $creation->setVideo('');
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($product);
-
-        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->persist($creation);
         $entityManager->flush();
 
-        return new Response('Saved new product with id '.$product->getId());
+        return new Response('Saved new creation with id ' . $creation->getId());
     }
-
 }

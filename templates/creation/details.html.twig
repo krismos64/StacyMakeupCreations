@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La création{% endblock %}
+
+{% block body %}
+ <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+       <img src="{{ asset('assets/logos/logo3.png') }}" alt="StacyMakeupCreations Logo" class="img-fluid mb-4">
+        <h1 class="fw-light">{{ creation.name }}</h1>
+        <img src="/uploads/{{ creation.image }}" lt="{{ creation.name }} Image" class="img-fluid mb-4">
+        <p class="lead text-body-secondary">{{ creation.description | raw }}</p>
+        <h2>La vidéo</h2>
+        <div class="text-center iframe-container">
+          <iframe 
+          width="560" 
+          height="315" 
+          src="{{ creation.video | replace({'watch': 'embed', '?v=': '/'}) }}" 
+          frameborder="0" 
+          allowfullscreen>
+          </iframe>
+      </div>
+    </div>
+  </section>
+{% endblock %}
