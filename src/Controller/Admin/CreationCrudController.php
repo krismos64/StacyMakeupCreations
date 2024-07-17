@@ -22,7 +22,7 @@ class CreationCrudController extends AbstractCrudController
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
-                ->setRequired(true),
+                ->setRequired(false),
             ];
 
             $slug = SlugField::new('slug')->setTargetFieldName('name');

@@ -34,7 +34,7 @@ class CreationController extends AbstractController
         $product->setSlug('creation-makeup');
         $product->setSubtitle('Lorem Ipsum');
         $product->setDescription('Lorem Ipsum');
-        $product->setImage('logo3.png');
+        $product->setImage('logo5.png');
         $product->setVideo('HHO6Ebmoe-o');
         
 
