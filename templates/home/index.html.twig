@@ -50,9 +50,6 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{{ path('app_creation_details', { 'slug': creation.slug }) }}" class="btn btn-sm btn-outline-secondary">Voir</a>
-                                {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Editer</button>
-                                {% endif %}
                             </div>
                             <small class="text-body-secondary">#{{ creation.id }}</small>
                         </div>
