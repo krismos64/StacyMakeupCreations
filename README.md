@@ -1,4 +1,4 @@
-# GARAGEAUTO
+# STACYMAKEUPCREATIONS
 
 Projet StacyMakeupCreations
 
