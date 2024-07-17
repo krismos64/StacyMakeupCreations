@@ -9,7 +9,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 class SignInController extends AbstractController
 {
@@ -23,11 +23,10 @@ class SignInController extends AbstractController
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid())
-
         {
             $user = $form->getData();
 
-            $plaintextPassword = $user->getPassword();
+            $plaintextPassword = $form->get('plainPassword')->getData(); // Récupérer le mot de passe en clair
 
             $hashedPassword = $passwordHasher->hashPassword(
                 $user,
@@ -37,6 +36,9 @@ class SignInController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Inscription réussie !');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('signin/index.html.twig', [
