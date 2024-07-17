@@ -2,11 +2,21 @@
 
 {% block title %}StacyMakeupCreations{% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/js/script.js') }}" defer></script>
+{% endblock %}
+
 {% block body %}
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-            <img src="{{ asset('assets/logos/logo3.png') }}" alt="StacyMakeupCreations Logo" class="img-fluid mb-4">
+            <div class="card shadow-sm">
+                <img src="{{ asset('assets/logos/logo3.png') }}" alt="StacyMakeupCreations Logo" class="img-fluid mb-4">
+            </div>
             <h1 class="fw-light">Bienvenue !</h1>
             <p class="lead text-body-secondary">Que vous recherchiez des conseils pour sublimer votre look quotidien, des idées pour un événement spécial, ou simplement de l'inspiration artistique, vous êtes au bon endroit !</p>
             <p>
@@ -16,6 +26,12 @@
             <p>
                 <a href="{{ path('app_login') }}" class="btn btn-secondary my-2">Connexion</a>
             </p>
+            {% else %}
+            {% if 'ROLE_ADMIN' in app.user.roles %}
+            <p>
+                <a href="{{ path('admin') }}" class="btn btn-warning my-2">Espace Administrateur</a>
+            </p>
+            {% endif %}
             {% endif %}
         </div>
     </div>
@@ -34,7 +50,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{{ path('app_creation_details', { 'slug': creation.slug }) }}" class="btn btn-sm btn-outline-secondary">Voir</a>
-                                {% if app.user and "ROLE_ADMIN" in app.user.roles %}
+                                {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Editer</button>
                                 {% endif %}
                             </div>
