@@ -17,22 +17,10 @@ class CreationRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Creation[] 
-     */
-    public function findByExampleField($value): array
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
-    /**
-     * @return Creation|null 
+     * Retourne une création basée sur le slug fourni.
+     * 
+     * @param string $slug
+     * @return Creation|null
      */
     public function findOneBySlug(string $slug): ?Creation
     {
@@ -40,7 +28,6 @@ class CreationRepository extends ServiceEntityRepository
             ->andWhere('c.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 }

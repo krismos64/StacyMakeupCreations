@@ -1,0 +1,31 @@
+
+#sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ignore les événements de souris */
+    overflow: hidden;
+    z-index: 9999; /* Assurez-vous que les paillettes apparaissent au-dessus des autres éléments */
+  }
+  
+  .sparkle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8); /* Couleur et opacité des paillettes */
+    pointer-events: none; /* Ignore les événements de souris */
+    width: 10px; /* Taille par défaut, ajustée dynamiquement en JS */
+    height: 10px; /* Taille par défaut, ajustée dynamiquement en JS */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Effet lumineux */
+  }
+  
+  @keyframes sparkleAnimation {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .sparkle {
+    animation: sparkleAnimation linear;
+  }
+  

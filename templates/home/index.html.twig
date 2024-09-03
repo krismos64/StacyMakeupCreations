@@ -2,62 +2,43 @@
 
 {% block title %}StacyMakeupCreations{% endblock %}
 
-{% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-<script src="{{ asset('assets/js/script.js') }}" defer></script>
-{% endblock %}
-
 {% block body %}
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <div class="card shadow-sm">
-                <img src="{{ asset('assets/logos/logo3.png') }}" alt="StacyMakeupCreations Logo" class="img-fluid mb-4">
-            </div>
-            <h1 class="fw-light">Bienvenue !</h1>
-            <p class="lead text-body-secondary">Que vous recherchiez des conseils pour sublimer votre look quotidien, des idées pour un événement spécial, ou simplement de l'inspiration artistique, vous êtes au bon endroit !</p>
-            <p>
-                <a href="mailto:stacy.laplace64@gmail.com" class="btn btn-primary my-2">Me contacter</a>
-            </p>
-            {% if not app.user %}
-            <p>
-                <a href="{{ path('app_login') }}" class="btn btn-secondary my-2">Connexion</a>
-            </p>
-            {% else %}
-            {% if 'ROLE_ADMIN' in app.user.roles %}
-            <p>
-                <a href="{{ path('admin') }}" class="btn btn-warning my-2">Espace Administrateur</a>
-            </p>
-            {% endif %}
-            {% endif %}
-        </div>
-    </div>
-</section>
 
-<div class="album py-5 bg-body-tertiary">
+<div class="container">
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <div class="logo">
+                    <img src="{{ asset('assets/logos/logo3.png') }}" alt="StacyMakeupCreations Logo" class="img-fluid logo mb-4">
+                </div>
+                 <h1 class="display-4 text-center mb-4">Bienvenue</h1>
+                <p class="lead text-body-secondary">Que vous recherchiez des conseils pour sublimer votre look quotidien, des idées pour un événement spécial, ou simplement de l'inspiration artistique, vous êtes au bon endroit !</p>
+
+            </div>
+        </div>
+    </section>
+
     <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for creation in creations %}
-            <!-- Item -->
-            <div class="col">
-                <div class="card shadow-sm">
-                    <img src="/uploads/{{ creation.image }}" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="{{ creation.name }}">
-                    <div class="card-body">
-                        <p class="card-text">{{ creation.name }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="{{ path('app_creation_details', { 'slug': creation.slug }) }}" class="btn btn-sm btn-outline-secondary">Voir</a>
+        <h1 class="display-4 text-center mb-4">Découvrez mes créations</h1>
+        <div class="row">
+            {% if creations is defined and creations|length > 0 %}
+                {% for creation in creations %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="{{ asset('uploads/' ~ creation.image) }}" class="card-img-top" alt="{{ creation.name }}">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ creation.name }}</h5>
+                            <p class="card-text">{{ creation.description | raw }}</p>
+                            <div class="mt-auto">
+                                <a href="{{ path('app_creation_details', {'slug': creation.slug}) }}" class="btn btn-sm btn-outline-secondary">Voir plus</a>
                             </div>
-                            <small class="text-body-secondary">#{{ creation.id }}</small>
                         </div>
                     </div>
                 </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p class="text-center">Aucune création disponible pour le moment. Revenez bientôt pour découvrir de nouvelles œuvres !</p>
+            {% endif %}
         </div>
     </div>
-</div>
 {% endblock %}

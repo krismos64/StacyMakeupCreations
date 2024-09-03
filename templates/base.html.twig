@@ -1,66 +1,87 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}StacyMakeupCreations{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-        <meta name="theme-color" content="#712cf9">
-    </head>
-    <body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}StacyMakeupCreations{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#712cf9">
     
-<header>
-  <div class="collapse text-bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4>À propos</h4>
-          {% if app.user and app.user.email %}
-         <p class="text-white">Bonjour {{ app.user.name }} !</p>
-          {% endif %}
-         <p class="text-white">Explorez mes créations uniques, des looks de maquillage audacieux aux designs d'ongles élégants, et laissez-vous inspirer par la magie des couleurs et des textures. Chaque œuvre est réalisée avec amour, soin, et une touche de créativité pour vous offrir le meilleur de la beauté.</p>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+        <link rel="stylesheet" href="{{ asset('assets/css/sparkles.css') }}"> 
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="collapse text-bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4>À propos</h4>
+                        {% if app.user and app.user.email %}
+                            <p class="text-white">Bonjour {{ app.user.name }} !</p>
+                        {% endif %}
+                        <p class="text-white">Explorez mes créations uniques, des looks de maquillage audacieux aux designs d'ongles élégants, et laissez-vous inspirer par la magie des couleurs et des textures. Chaque œuvre est réalisée avec amour, soin, et une touche de créativité pour vous offrir le meilleur de la beauté.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4>Contact</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="mailto:stacy.laplace64@gmail.com" class="text-white">Envoyer un e-mail</a></li>
+                            <li>
+                {% if not app.user %}
+                <p>
+                    <a href="{{ path('app_login') }}" class="btn btn-secondary my-2">Connexion</a>
+                </p>
+                {% else %}
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+                <p>
+                    <a href="{{ path('admin') }}" class="btn btn-warning my-2">Espace Administrateur</a>
+                </p>
+                {% endif %}
+                {% endif %}
+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4>Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="mailto:stacy.laplace64@gmail.com" class="text-white">Envoyer un e-mail</a></li>
-          </ul>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="/" class="navbar-brand d-flex align-items-center">
+                    <strong>StacyMakeupCreations</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <strong>StacyMakeupCreations</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
-</header>
-<main>
- {% block body %}{% endblock %}
-</main>
-<footer class="text-body-secondary py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Aller en haut</a>
-    </p>
-    <p class="mb-1">©StacyMakeupCreations vous remercie de votre visite !</p>
-  </div>
-</footer>
-<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    </body>
+    </header>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+    <div id="sparkles"></div>
+
+    <footer class="text-body-secondary py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#" class="back-to-top">Aller en haut</a>
+            </p>
+            <p class="mb-1">©StacyMakeupCreations vous remercie de votre visite ! Copyright 2024 krismos64</p>
+        </div>
+    </footer>
+    
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/js/sparkles.js') }}"></script>
+
+</body>
 </html>

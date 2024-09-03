@@ -2,23 +2,28 @@
 
 {% block title %}La création{% endblock %}
 
+
 {% block body %}
- <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">{{ creation.name }}</h1>
-        <img src="/uploads/{{ creation.image }}" lt="{{ creation.name }} Image" class="img-fluid mb-4">
-        <p class="lead text-body-secondary">{{ creation.description | raw }}</p>
-        <h2>La vidéo</h2>
-        <div class="text-center iframe-container">
-          <iframe 
-          width="560" 
-          height="315" 
-          src="{{ creation.video | replace({'watch': 'embed', '?v=': '/'}) }}" 
-          frameborder="0" 
-          allowfullscreen>
-          </iframe>
-      </div>
+<section class="py-5 container">
+    <div class="row py-lg-5 justify-content-center">
+        <div class="col-lg-8 col-md-10 mx-auto text-center">
+            <h1 class="fw-bold mb-4">{{ creation.name }}</h1>
+            <div class="creation-image mb-4">
+                <!-- Image avec effet de zoom au survol -->
+                <img src="/uploads/{{ creation.image }}" alt="{{ creation.name }} Image" class="img-fluid rounded shadow-sm hover-zoom">
+            </div>
+            <!-- Description avec une meilleure typographie -->
+            <p class="card-text">{{ creation.description | raw }}</p>
+            <!-- Section vidéo responsive -->
+            <h2 class="fw-light mb-3">La vidéo</h2>
+            <div class="video-responsive">
+                <iframe 
+                    src="{{ creation.video | replace({'watch': 'embed', '?v=': '/'}) }}" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 {% endblock %}
