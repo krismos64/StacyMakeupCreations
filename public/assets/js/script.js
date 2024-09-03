@@ -22,14 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  // Smooth scroll for 'Back to top' button
   const backToTopButton = document.querySelector('a[href="#"]');
   backToTopButton.addEventListener('click', function (e) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // IntersectionObserver for animations on scroll
   const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
           if (entry.isIntersecting) {

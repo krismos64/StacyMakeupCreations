@@ -9,12 +9,9 @@
         <div class="col-lg-8 col-md-10 mx-auto text-center">
             <h1 class="fw-bold mb-4">{{ creation.name }}</h1>
             <div class="creation-image mb-4">
-                <!-- Image avec effet de zoom au survol -->
                 <img src="/uploads/{{ creation.image }}" alt="{{ creation.name }} Image" class="img-fluid rounded shadow-sm hover-zoom">
             </div>
-            <!-- Description avec une meilleure typographie -->
             <p class="card-text">{{ creation.description | raw }}</p>
-            <!-- Section vidéo responsive -->
             <h2 class="fw-light mb-3">La vidéo</h2>
             <div class="video-responsive">
                 <iframe 
