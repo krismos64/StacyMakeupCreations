@@ -1,0 +1,137 @@
+/* Police de caractère plus moderne */
+body {
+  background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container h1 {
+  color: #333;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 2px #aaa;
+  margin-bottom: 20px;
+}
+
+.lead {
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #ff6f61;
+  border-color: #ff6f61;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #ff8b7e;
+  border-color: #ff8b7e;
+}
+
+.btn-secondary {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #ffca2c;
+  border-color: #ffca2c;
+}
+
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+}
+
+.navbar {
+  background: linear-gradient(45deg, #ff6f61, #ff8b7e);
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s ease infinite;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #ffca2c;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28%255, %255, %255, 0.55%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-dark .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.navbar .navbar-nav .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+  color: #ffca2c !important;
+}
+
+.navbar-collapse {
+  justify-content: flex-end;
+}
+
+footer {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  padding: 20px 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+  .card {
+    margin-bottom: 20px;
+  }
+  .lead {
+    font-size: 1rem;
+  }
+  .btn-primary, .btn-secondary {
+    padding: 10px 20px;
+  }
+}
