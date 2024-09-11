@@ -20,7 +20,9 @@ background: linear-gradient(to right, #ffe4e1 0%, #fadadd 100%);
 font-family: 'Poppins', "Helvetica Neue", sans-serif;
 color: #333;
 }
-
+body, html {
+    overflow-x: hidden;
+  }  
 .container h1 {
 color: #ff69b4;
 font-size: 2.5rem;
@@ -402,3 +404,9 @@ width: 100%;
 height: 100%;
 border: 0;
 }
+
+img, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
