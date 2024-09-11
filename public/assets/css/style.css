@@ -1,90 +1,404 @@
+#sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ignore les événements de souris */
+  overflow: hidden;
+  z-index: 9999; /* Assurez-vous que les paillettes apparaissent au-dessus des autres éléments */
+}
+
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8); /* Couleur et opacité des paillettes */
+  pointer-events: none; /* Ignore les événements de souris */
+}
 body {
-  background: linear-gradient(to right, #ffe4e1, #fadadd);
-  font-family: 'Poppins', sans-serif;
-  color: #333;
+background: linear-gradient(to right, #ffe4e1 0%, #fadadd 100%);
+font-family: 'Poppins', "Helvetica Neue", sans-serif;
+color: #333;
 }
 
+.container h1 {
+color: #ff69b4;
+font-size: 2.5rem;
+text-shadow: 1px 1px 2px #aaa;
+}
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Dancing Script', cursive; 
-  color: #ff69b4; 
+font-family: 'Dancing Script', cursive; 
+color: #ff69b4; 
 }
-
-p, .card-text {
-  color: #333; 
-  font-size: 1.1rem;
-  line-height: 1.6;
+p {
+font-family: 'Poppins', sans-serif; 
+color: #333; 
+font-size: 1.1rem;
+line-height: 1.6;
+margin: 0.5rem 0;
 }
-
 section p {
-  color: #ff1493;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-left: 4px solid #ff1493;
-  padding-left: 1rem;
+color: #ff1493; /* Couleur rose vif pour les paragraphes dans les sections principales */
+font-size: 1.2rem;
+font-weight: 500;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Ombre légère pour mettre en évidence */
+border-left: 4px solid #ff1493; /* Bordure gauche colorée */
+padding-left: 1rem; /* Espace à gauche pour la bordure */
+background: rgba(255, 105, 180, 0.1); /* Fond léger */
+border-radius: 5px; /* Coins arrondis */
 }
 
-.btn-primary, .btn-primary:hover {
-  background-color: #e75480;
-  border-color: #d74370;
+/* Style pour les paragraphes des créations */
+.card-text {
+color: #666; /* Couleur plus douce pour le texte des cartes */
+font-size: 1rem;
+}
+.lead {
+color: #555;
 }
 
-.btn-secondary, .btn-secondary:hover {
-  background-color: #ffc107;
-  border-color: #ffca2c;
+.btn-primary {
+background-color: #e75480; /* Rose moyen */
+border-color: #e75480;
+}
+
+.btn-primary:hover {
+background-color: #d74370; /* Rose foncé */
+border-color: #d74370;
+}
+
+.btn-secondary {
+background-color: #ffc107;
+border-color: #ffc107;
+}
+
+.btn-secondary:hover {
+background-color: #ffca2c;
+border-color: #ffca2c;
 }
 
 .card {
-  background-color: #fff4f4;
-  border: 1px solid #f8d7da;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  background-color: #ffe4e1;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+transform: scale(1.05);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.card-title {
-  color: #ff69b4;
-  font-size: 1.25rem;
-  font-weight: bold;
+.card-body {
+background-color: rgba(255, 255, 255, 0.9);
 }
 
 .navbar {
-  background: linear-gradient(45deg, #ff69b4, #ff1493);
-  border-bottom: 3px solid #ffca2c;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+background: linear-gradient(45deg, #ff69b4, #ff1493);
+background-size: 200% 200%;
+animation: gradientAnimation 5s ease infinite;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border-bottom: 3px solid #ffca2c;
 }
 
-.navbar-brand, .navbar-nav .nav-link {
-  color: #fff !important;
-  font-weight: bold;
+@keyframes gradientAnimation {
+0% {
+    background-position: 0% 50%;
+}
+50% {
+    background-position: 100% 50%;
+}
+100% {
+    background-position: 0% 50%;
+}
+}
+
+.navbar-brand {
+font-size: 1.5rem;
+font-weight: bold;
+color: #ffffff !important;
+text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler {
+border: none;
+}
+
+.navbar-toggler-icon {
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28%255, %255, %255, 0.55%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-dark .navbar-toggler-icon {
+filter: invert(1);
+}
+
+.navbar .navbar-nav .nav-link {
+color: #ffffff !important;
+font-weight: 500;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+color: #ffca2c !important;
+}
+
+.navbar-collapse {
+justify-content: flex-end;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+.navbar {
+    padding: 1rem;
+}
+.container h1 {
+    font-size: 2rem;
+}
+.card img {
+    height: auto;
+    max-height: 150px;
+}
+}
+
+@media (max-width: 576px) {
+.navbar-brand {
+    font-size: 1.2rem;
+}
+.card {
+    margin-bottom: 20px;
+}
+}
+/* Effet de zoom au survol */
+.hover-zoom {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-zoom:hover {
+transform: scale(1.05);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles de la vidéo responsive */
+.iframe-container {
+position: relative;
+overflow: hidden;
+width: 100%;
+padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.iframe-container iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: none;
+}
+/* Assure que les images des cartes sont de la même taille */
+.card-img-top {
+object-fit: cover; /* Assure que l'image couvre le conteneur sans déformer l'image */
+width: 100%; /* Prend toute la largeur du conteneur */
+height: 200px; /* Hauteur fixe pour toutes les images */
+}
+
+/* Uniformise la hauteur des cartes */
+.card {
+display: flex;
+flex-direction: column;
+height: 100%;
+}
+
+.logo {
+max-width: 100%;
+height: auto;
+display: block;
+margin: 0 auto; /* Centre l'image horizontalement */
+}
+
+/* Styles des vignettes */
+.card {
+background-color: #fff4f4; /* Couleur de fond douce et féminine */
+border: 1px solid #f8d7da; /* Bordure subtile pour plus de contraste */
+border-radius: 10px; /* Coins arrondis pour un effet plus doux */
+overflow: hidden; /* Masquer les débordements */
+transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+transform: scale(1.05);
+background-color: #ffe4e1; /* Changement de couleur au survol */
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Style du texte dans les cartes */
+.card-body {
+padding: 1.5rem;
+color: #333; /* Couleur du texte */
+font-family: "Comic Sans MS", cursive, sans-serif; /* Police ludique et créative */
+}
+
+/* Style du titre de la carte */
+.card-title {
+font-size: 1.25rem;
+font-weight: bold;
+color: #ff69b4; /* Couleur rose pour le titre */
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du texte de la carte */
+.card-text {
+font-size: 0.875rem;
+color: #555; /* Couleur gris foncé pour une meilleure lisibilité */
+}
+
+/* Boutons sur les cartes */
+.btn-outline-secondary {
+border-color: #ff69b4;
+color: #ff69b4;
+}
+
+.btn-outline-secondary:hover {
+background-color: #ff69b4;
+color: #fff;
+}
+
+/* Effet de zoom au survol */
+.card:hover {
+transform: scale(1.05);
+transition: transform 0.3s ease-in-out;
+}
+
+/* Assure que les images des cartes sont de la même taille */
+.card-img-top {
+object-fit: cover;
+width: 100%;
+height: 200px;
+}
+
+/* Styles responsives */
+@media (max-width: 768px) {
+.card-img-top {
+    height: auto;
+    max-height: 150px;
+}
+}
+
+@media (max-width: 576px) {
+.card {
+    margin-bottom: 20px;
+}
+}
+/* Style du lien "Aller en haut" */
+.float-end {
+position: relative;
 }
 
 .float-end a {
-  background-color: #ff69b4;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+display: inline-block;
+background-color: #ff69b4; /* Couleur de fond attrayante */
+color: #fff; /* Couleur du texte */
+padding: 10px 20px;
+border-radius: 25px; /* Coins arrondis pour un effet moderne */
+text-decoration: none; /* Supprimer la décoration du texte */
+font-weight: bold;
+font-size: 1rem;
+transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+position: relative;
 }
 
 .float-end a:hover {
-  background-color: #e75480;
-  transform: translateY(-5px);
+background-color: #e75480; /* Couleur de fond au survol */
+transform: translateY(-5px); /* Légère élévation au survol */
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
 }
 
+/* Animation de pulsation */
+.float-end a::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 300%;
+height: 300%;
+background: rgba(255, 105, 180, 0.3); /* Couleur de l'effet de pulsation */
+border-radius: 50%;
+transform: translate(-50%, -50%);
+transition: width 0.3s, height 0.3s, opacity 0.3s;
+opacity: 0;
+}
+
+.float-end a:hover::after {
+width: 400%;
+height: 400%;
+opacity: 1;
+}
 footer {
-  background: #f8f9fa;
-  border-top: 2px solid #ff69b4;
-  text-align: center;
-  color: #333;
+background: #f8f9fa; /* Couleur de fond claire pour le footer */
+border-top: 2px solid #ff69b4; /* Bordure supérieure colorée */
+}
+
+footer p {
+margin: 0;
+color: #333; /* Couleur du texte principale */
+font-family: "Arial", sans-serif; /* Police de caractères claire */
+font-size: 1rem;
+text-align: center;
+}
+
+footer p.mb-1 {
+color: #ff69b4; /* Couleur rose pour le texte secondaire */
+font-size: 1.1rem;
+font-weight: bold;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Ombre pour donner du relief */
+}
+
+/* Effet de survol sur le texte du footer */
+footer p.mb-1:hover {
+color: #e75480; /* Changement de couleur au survol */
+text-decoration: underline; /* Souligner le texte au survol */
+cursor: pointer;
+}
+
+/* Style pour le lien "Aller en haut" dans le footer */
+.footer .back-to-top {
+color: #ff69b4; /* Couleur du texte du lien */
+font-size: 1rem;
+text-decoration: none; /* Retirer la décoration de texte */
+font-weight: bold;
+display: inline-block;
+padding: 10px 20px;
+background: rgba(255, 105, 180, 0.2); /* Fond léger pour le lien */
+border-radius: 25px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère */
+transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .footer .back-to-top:hover {
-  background-color: #ff69b4;
-  color: #fff;
+background-color: #ff69b4; /* Fond plus intense au survol */
+color: #fff; /* Texte en blanc au survol */
+transform: translateY(-3px); /* Légère élévation au survol */
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+}
+
+/* Assure que les images sont fluides et s'adaptent bien */
+.creation-image img {
+width: 100%;
+height: auto;
+max-height: 500px; /* Hauteur maximale pour éviter les images trop grandes */
+object-fit: cover;
+}
+
+/* Styles pour la vidéo responsive */
+.video-responsive {
+position: relative;
+padding-top: 56.25%; /* Aspect ratio 16:9 */
+height: 0;
+overflow: hidden;
+max-width: 100%;
+}
+
+.video-responsive iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: 0;
 }
