@@ -9,6 +9,25 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+###> Fichiers sensibles ###
+# Fichiers de backup de base de données
+*.sql
+*.sql.gz
+*.dump
+
+# Fichiers de logs sensibles
+*.log
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache

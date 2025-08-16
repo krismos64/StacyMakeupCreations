@@ -6,7 +6,13 @@ Il s'agit d'un projet pour une personne désirant exposer ses créations artisti
 
 Voici le lien du site déployé : https://stacymakeupcreations.space/
 
-Pour se connecter en tant qu' ADMIN, cliquez sur le bouton "connexion dans la barre de navigation".
-L'identifiant est "stacy.laplace64@gmail.com, le nom est Stacy et le mot de passe est "Chouchou64.". Une fois connecté, vous aurez accès au bouton "espace administrateur" dans la barre de navigation qui vous amènera à l'interface administrateur qui permet d'actualiser le site.
+## Administration
+
+Pour accéder à l'interface d'administration :
+1. Cliquez sur le bouton "connexion" dans la barre de navigation
+2. Utilisez vos identifiants d'administrateur 
+3. Une fois connecté, vous aurez accès au bouton "espace administrateur" qui vous amènera à l'interface de gestion du site
+
+> **Note de sécurité :** Les identifiants d'administration sont fournis séparément pour des raisons de sécurité.
 
 Ce site a été réalisé en Symfony.
