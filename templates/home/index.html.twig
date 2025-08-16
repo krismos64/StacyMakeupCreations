@@ -1,62 +1,131 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}StacyMakeupCreations - Portfolio Artistique{% endblock %}
+{% block title %}StacyMakeupCreations - Portfolio Artistique | Maquilleuse Professionnelle{% endblock %}
 
-{% block meta_description %}Découvrez le portfolio de Stacy, artiste maquillage professionnel. Créations uniques, maquillage artistique et nail art créatif.{% endblock %}
+{% block meta_description %}Découvrez le portfolio de Stacy Laplace, artiste maquillage professionnel. Créations uniques, maquillage artistique et nail art créatif pour tous vos événements en France.{% endblock %}
+
+{% block meta_keywords %}portfolio maquillage, artiste makeup, nail art professionnel, maquilleuse France, créations artistiques, événementiel beauté{% endblock %}
+
+{% block og_type %}website{% endblock %}
+
+{% block schema_type %}LocalBusiness{% endblock %}
 
 {% block body %}
+
+<!-- Données structurées spécifiques à la page d'accueil -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "StacyMakeupCreations",
+    "alternateName": "Stacy Laplace Maquilleuse",
+    "description": "Artiste maquillage professionnelle spécialisée en maquillage artistique, nail art et événementiel",
+    "url": "{{ app.request.schemeAndHttpHost }}",
+    "telephone": "",
+    "email": "stacy.laplace64@gmail.com",
+    "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "FR"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "43.6043",
+        "longitude": "-1.4437"
+    },
+    "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+    },
+    "serviceType": ["Maquillage artistique", "Nail art", "Maquillage événementiel", "Formation beauté"],
+    "areaServed": {
+        "@type": "Country",
+        "name": "France"
+    },
+    "image": "{{ absolute_url(asset('assets/img/logo5.png')) }}",
+    "logo": "{{ absolute_url(asset('assets/img/logo5.png')) }}",
+    "sameAs": [
+        "#",
+        "#",
+        "#"
+    ],
+    "founder": {
+        "@type": "Person",
+        "name": "Stacy Laplace"
+    }
+}
+</script>
 <!-- Hero Section Futuriste -->
-<section class="hero">
+<section class="hero" role="banner" aria-labelledby="hero-title">
     <div class="hero-content">
-        <h1 class="floating">
-            <i class="fas fa-palette me-3"></i>
-            StacyMakeupCreations
+        <h1 id="hero-title" class="floating">
+            <i class="fas fa-palette me-3" aria-hidden="true"></i>
+            <span>StacyMakeupCreations</span>
         </h1>
-        <p class="lead">
+        <p class="lead" role="doc-subtitle">
             Artiste maquillage passionnée • Créatrice de looks uniques • Innovation & Créativité
         </p>
-        <div class="hero-buttons">
-            <a href="#creations" class="btn btn-primary">
-                <i class="fas fa-images me-2"></i>Découvrir mes créations
+        <div class="hero-buttons" role="group" aria-label="Actions principales">
+            <a href="#creations" class="btn btn-primary" aria-describedby="hero-cta-desc">
+                <i class="fas fa-images me-2" aria-hidden="true"></i>
+                <span>Découvrir mes créations</span>
             </a>
-            <a href="mailto:stacy.laplace64@gmail.com" class="btn btn-secondary">
-                <i class="fas fa-envelope me-2"></i>Me contacter
+            <a href="mailto:stacy.laplace64@gmail.com" class="btn btn-secondary" 
+               aria-label="Envoyer un email à stacy.laplace64@gmail.com">
+                <i class="fas fa-envelope me-2" aria-hidden="true"></i>
+                <span>Me contacter</span>
             </a>
         </div>
+        <p id="hero-cta-desc" class="sr-only">Explorez le portfolio de créations artistiques de maquillage et nail art</p>
     </div>
 </section>
 
 <!-- Section À propos -->
-<section class="section" id="about">
+<section class="section" id="about" aria-labelledby="about-title">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="floating">
-                    <img src="{{ asset('assets/img/logo2.png') }}" alt="Stacy Logo" class="img-fluid mb-4" style="max-width: 300px;">
+                    <img src="{{ asset('assets/img/logo2.png') }}" 
+                         alt="Logo StacyMakeupCreations - Palette de maquillage artistique" 
+                         class="img-fluid mb-4" 
+                         style="max-width: 300px;"
+                         loading="lazy"
+                         width="300"
+                         height="auto">
                 </div>
             </div>
             <div class="col-lg-6">
-                <h2 class="section-title">
-                    <i class="fas fa-star me-3"></i>
-                    Ma Passion, Votre Beauté
-                </h2>
-                <p class="lead">
-                    Bienvenue dans mon univers artistique ! Je suis Stacy, maquilleuse professionnelle passionnée par l'art de sublimer la beauté naturelle.
-                </p>
-                <p>
-                    Chaque création est une œuvre unique, pensée pour révéler votre personnalité et vous faire rayonner. De l'art conceptuel aux looks quotidiens, découvrez un monde où créativité et technique se rencontrent.
-                </p>
-                <div class="row mt-4">
-                    <div class="col-6">
-                        <div class="text-center">
-                            <h3 class="h4 text-primary">{{ creations|length }}+</h3>
-                            <p class="small">Créations réalisées</p>
+                <header>
+                    <h2 id="about-title" class="section-title">
+                        <i class="fas fa-star me-3" aria-hidden="true"></i>
+                        <span>Ma Passion, Votre Beauté</span>
+                    </h2>
+                </header>
+                <div class="about-content">
+                    <p class="lead">
+                        Bienvenue dans mon univers artistique ! Je suis <strong>Stacy Laplace</strong>, maquilleuse professionnelle passionnée par l'art de sublimer la beauté naturelle.
+                    </p>
+                    <p>
+                        Chaque création est une œuvre unique, pensée pour révéler votre personnalité et vous faire rayonner. De l'art conceptuel aux looks quotidiens, découvrez un monde où créativité et technique se rencontrent.
+                    </p>
+                    <div class="row mt-4" role="list" aria-label="Statistiques de l'artiste">
+                        <div class="col-6" role="listitem">
+                            <div class="text-center">
+                                <h3 class="h4 text-primary">
+                                    <span aria-label="{{ creations|length }} créations réalisées">{{ creations|length }}+</span>
+                                </h3>
+                                <p class="small">Créations réalisées</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="text-center">
-                            <h3 class="h4 text-primary">3+</h3>
-                            <p class="small">Années d'expérience</p>
+                        <div class="col-6" role="listitem">
+                            <div class="text-center">
+                                <h3 class="h4 text-primary">
+                                    <span aria-label="Plus de 3 années d'expérience">3+</span>
+                                </h3>
+                                <p class="small">Années d'expérience</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,36 +146,64 @@
         </p>
         
         {% if creations is defined and creations|length > 0 %}
-            <div class="creations-grid">
+            <div class="creations-grid" role="list" aria-label="Portfolio des créations artistiques">
                 {% for creation in creations %}
-                    <div class="card creation-card">
+                    <article class="card creation-card" role="listitem" itemscope itemtype="https://schema.org/VisualArtwork">
                         <div class="creation-image-container">
                             <img src="{{ asset('uploads/' ~ creation.image) }}" 
                                  class="creation-image" 
-                                 alt="{{ creation.name }}"
-                                 loading="lazy">
-                            <div class="creation-overlay">
+                                 alt="Création {{ creation.name }} - {{ creation.subtitle }} par Stacy Laplace"
+                                 loading="lazy"
+                                 width="300"
+                                 height="250"
+                                 itemprop="image">
+                            <div class="creation-overlay" aria-hidden="true">
                                 <div class="creation-overlay-content">
-                                    <h5>{{ creation.name }}</h5>
-                                    <p>{{ creation.subtitle }}</p>
+                                    <h5 itemprop="name">{{ creation.name }}</h5>
+                                    <p itemprop="description">{{ creation.subtitle }}</p>
                                     <a href="{{ path('app_creation_details', {'slug': creation.slug}) }}" 
-                                       class="btn btn-accent btn-sm">
-                                        <i class="fas fa-eye me-1"></i>Voir plus
+                                       class="btn btn-accent btn-sm"
+                                       aria-label="Voir les détails de {{ creation.name }}">
+                                        <i class="fas fa-eye me-1" aria-hidden="true"></i>
+                                        <span>Voir plus</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">{{ creation.name }}</h5>
-                            <p class="card-text">{{ creation.subtitle }}</p>
+                            <header>
+                                <h5 class="card-title" itemprop="name">{{ creation.name }}</h5>
+                            </header>
+                            <p class="card-text" itemprop="description">{{ creation.subtitle }}</p>
                             <div class="creation-meta">
                                 <small class="text-muted">
-                                    <i class="fas fa-calendar me-1"></i>
-                                    {{ creation.createdAt|date('d/m/Y') }}
+                                    <i class="fas fa-calendar me-1" aria-hidden="true"></i>
+                                    <time datetime="{{ creation.createdAt|date('c') }}" itemprop="dateCreated">
+                                        {{ creation.createdAt|date('d/m/Y') }}
+                                    </time>
                                 </small>
                             </div>
+                            <!-- Données structurées pour chaque création -->
+                            <script type="application/ld+json">
+                            {
+                                "@context": "https://schema.org",
+                                "@type": "VisualArtwork",
+                                "name": "{{ creation.name|escape('js') }}",
+                                "description": "{{ creation.subtitle|escape('js') }}",
+                                "image": "{{ absolute_url(asset('uploads/' ~ creation.image)) }}",
+                                "url": "{{ url('app_creation_details', {'slug': creation.slug}) }}",
+                                "dateCreated": "{{ creation.createdAt|date('c') }}",
+                                "creator": {
+                                    "@type": "Person",
+                                    "name": "Stacy Laplace",
+                                    "url": "{{ app.request.schemeAndHttpHost }}"
+                                },
+                                "artMedium": "Maquillage artistique",
+                                "genre": "Art corporel"
+                            }
+                            </script>
                         </div>
-                    </div>
+                    </article>
                 {% endfor %}
             </div>
         {% else %}

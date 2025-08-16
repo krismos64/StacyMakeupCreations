@@ -1,91 +1,174 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}StacyMakeupCreations - Artiste Maquillage Professionnel{% endblock %}</title>
-    <link rel="icon" href="{{ asset('assets/icon/icon.ico') }}" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block meta_description %}Portfolio professionnel de créations artistiques de maquillage et nail art par Stacy Laplace. Découvrez des looks uniques, audacieux et créatifs pour tous vos événements.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}maquillage, nail art, maquilleuse professionnelle, makeup artist, beauté, cosmétiques, ongles, mariage, événementiel, France{% endblock %}">
+    <meta name="author" content="Stacy Laplace - StacyMakeupCreations">
+    <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <!-- Viewport et responsivité -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="theme-color" content="#667eea">
-    <meta name="description" content="{% block meta_description %}Portfolio professionnel de créations artistiques de maquillage et nail art par Stacy. Découvrez des looks uniques, audacieux et créatifs.{% endblock %}">
+    <meta name="color-scheme" content="dark light">
+    
+    <!-- Favicons -->
+    <link rel="icon" href="{{ asset('assets/icon/icon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/icon/icon.ico') }}">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{{ asset('assets/img/logo5.png') }}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('assets/img/logo5.png')) }}{% endblock %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{% block og_url %}{{ app.request.uri }}{% endblock %}">
+    <meta property="og:site_name" content="StacyMakeupCreations">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ block('og_title') }}">
+    <meta name="twitter:description" content="{{ block('og_description') }}">
+    <meta name="twitter:image" content="{{ block('og_image') }}">
+    <meta name="twitter:creator" content="@stacymakeup">
+    
+    <!-- Données structurées Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "{% block schema_type %}Person{% endblock %}",
+        "name": "Stacy Laplace",
+        "alternateName": "StacyMakeupCreations",
+        "jobTitle": "Maquilleuse Professionnelle",
+        "description": "Artiste maquillage professionnelle spécialisée en maquillage artistique, nail art et événementiel en France",
+        "url": "{{ app.request.schemeAndHttpHost }}",
+        "image": "{{ absolute_url(asset('assets/img/logo5.png')) }}",
+        "email": "stacy.laplace64@gmail.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+        },
+        "sameAs": [
+            "#",
+            "#",
+            "#"
+        ],
+        "offers": {
+            "@type": "Offer",
+            "category": "Maquillage & Nail Art"
+        }
+    }
+    </script>
+
+    <!-- Performance et préchargement -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="{{ asset('assets/css/style.css') }}" as="style">
+    <link rel="preload" href="{{ asset('assets/js/script.js') }}" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
 
     {% block stylesheets %}
-        <!-- Fonts modernes -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- Fonts modernes avec display=swap pour éviter FOIT -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         
         <!-- Bootstrap et style principal -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
         
-        <!-- Icons Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Icons Font Awesome avec préchargement -->
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     {% endblock %}
 </head>
 <body>
     <!-- Particles d'arrière-plan -->
     <div class="particles" id="particles"></div>
 
-    <!-- Navigation futuriste -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+    <!-- Lien d'évitement pour l'accessibilité -->
+    <a href="#main-content" class="sr-only sr-only-focusable">Aller au contenu principal</a>
+    
+    <!-- Navigation futuriste accessible -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar" role="navigation" aria-label="Navigation principale">
         <div class="container">
-            <a class="navbar-brand floating" href="{{ path('app_home') }}">
-                <i class="fas fa-palette me-2"></i>
-                StacyMakeupCreations
+            <a class="navbar-brand floating" href="{{ path('app_home') }}" aria-label="StacyMakeupCreations - Retour à l'accueil">
+                <i class="fas fa-palette me-2" aria-hidden="true"></i>
+                <span>StacyMakeupCreations</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Ouvrir le menu de navigation">
                 <span class="navbar-toggler-icon"></span>
+                <span class="sr-only">Menu</span>
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_home') }}">
-                            <i class="fas fa-home me-1"></i>Accueil
+                <ul class="navbar-nav ms-auto" role="menubar">
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="{{ path('app_home') }}" role="menuitem" 
+                           {% if app.request.get('_route') == 'app_home' %}aria-current="page"{% endif %}>
+                            <i class="fas fa-home me-1" aria-hidden="true"></i>
+                            <span>Accueil</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#creations">
-                            <i class="fas fa-images me-1"></i>Créations
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="#creations" role="menuitem">
+                            <i class="fas fa-images me-1" aria-hidden="true"></i>
+                            <span>Créations</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">
-                            <i class="fas fa-user me-1"></i>À propos
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="#about" role="menuitem">
+                            <i class="fas fa-user me-1" aria-hidden="true"></i>
+                            <span>À propos</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mailto:stacy.laplace64@gmail.com">
-                            <i class="fas fa-envelope me-1"></i>Contact
+                    <li class="nav-item" role="none">
+                        <a class="nav-link" href="mailto:stacy.laplace64@gmail.com" role="menuitem" 
+                           aria-label="Envoyer un email à stacy.laplace64@gmail.com">
+                            <i class="fas fa-envelope me-1" aria-hidden="true"></i>
+                            <span>Contact</span>
                         </a>
                     </li>
                     {% if not app.user %}
-                        <li class="nav-item">
-                            <a href="{{ path('app_login') }}" class="btn btn-accent ms-2">
-                                <i class="fas fa-sign-in-alt me-1"></i>Connexion
+                        <li class="nav-item" role="none">
+                            <a href="{{ path('app_login') }}" class="btn btn-accent ms-2" role="menuitem"
+                               aria-label="Se connecter à l'espace administrateur">
+                                <i class="fas fa-sign-in-alt me-1" aria-hidden="true"></i>
+                                <span>Connexion</span>
                             </a>
                         </li>
                     {% else %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user-circle me-1"></i>{{ app.user.name }}
+                        <li class="nav-item dropdown" role="none">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false" aria-haspopup="true" aria-label="Menu utilisateur {{ app.user.name }}">
+                                <i class="fas fa-user-circle me-1" aria-hidden="true"></i>
+                                <span>{{ app.user.name }}</span>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" role="menu" aria-label="Options utilisateur">
                                 {% if 'ROLE_ADMIN' in app.user.roles %}
-                                    <li>
-                                        <a class="dropdown-item" href="{{ path('admin') }}">
-                                            <i class="fas fa-cog me-1"></i>Administration
+                                    <li role="none">
+                                        <a class="dropdown-item" href="{{ path('admin') }}" role="menuitem">
+                                            <i class="fas fa-cog me-1" aria-hidden="true"></i>
+                                            <span>Administration</span>
                                         </a>
                                     </li>
                                 {% endif %}
-                                <li>
-                                    <a class="dropdown-item" href="{{ path('app_logout') }}">
-                                        <i class="fas fa-sign-out-alt me-1"></i>Déconnexion
+                                <li role="none">
+                                    <a class="dropdown-item" href="{{ path('app_logout') }}" role="menuitem">
+                                        <i class="fas fa-sign-out-alt me-1" aria-hidden="true"></i>
+                                        <span>Déconnexion</span>
                                     </a>
                                 </li>
                             </ul>
@@ -97,74 +180,91 @@
     </nav>
 
     <!-- Contenu principal -->
-    <main>
+    <main id="main-content" role="main" tabindex="-1">
         {% block body %}{% endblock %}
     </main>
 
-    <!-- Footer moderne -->
-    <footer class="footer">
+    <!-- Footer moderne accessible -->
+    <footer class="footer" role="contentinfo" aria-label="Informations du site">
         <div class="container">
             <div class="footer-content">
-                <div>
-                    <h5><i class="fas fa-palette me-2"></i>StacyMakeupCreations</h5>
+                <section aria-labelledby="footer-about">
+                    <h5 id="footer-about">
+                        <i class="fas fa-palette me-2" aria-hidden="true"></i>
+                        StacyMakeupCreations
+                    </h5>
                     <p>Artiste maquillage professionnel passionnée par la créativité et l'innovation. Chaque création raconte une histoire unique.</p>
-                    <div class="social-links">
-                        <a href="#" class="me-3" aria-label="Instagram">
-                            <i class="fab fa-instagram fa-lg"></i>
+                    <div class="social-links" role="list" aria-label="Réseaux sociaux">
+                        <a href="#" class="me-3" aria-label="Suivre sur Instagram (lien non configuré)" role="listitem">
+                            <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="me-3" aria-label="Facebook">
-                            <i class="fab fa-facebook fa-lg"></i>
+                        <a href="#" class="me-3" aria-label="Suivre sur Facebook (lien non configuré)" role="listitem">
+                            <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="me-3" aria-label="TikTok">
-                            <i class="fab fa-tiktok fa-lg"></i>
+                        <a href="#" class="me-3" aria-label="Suivre sur TikTok (lien non configuré)" role="listitem">
+                            <i class="fab fa-tiktok fa-lg" aria-hidden="true"></i>
                         </a>
-                        <a href="mailto:stacy.laplace64@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope fa-lg"></i>
+                        <a href="mailto:stacy.laplace64@gmail.com" aria-label="Envoyer un email à stacy.laplace64@gmail.com" role="listitem">
+                            <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
                         </a>
                     </div>
-                </div>
+                </section>
                 
-                <div>
-                    <h5><i class="fas fa-link me-2"></i>Navigation</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                        <li><a href="#creations">Portfolio</a></li>
-                        <li><a href="#about">À propos</a></li>
-                        <li><a href="mailto:stacy.laplace64@gmail.com">Contact</a></li>
+                <section aria-labelledby="footer-nav">
+                    <h5 id="footer-nav">
+                        <i class="fas fa-link me-2" aria-hidden="true"></i>
+                        Navigation
+                    </h5>
+                    <nav aria-label="Navigation secondaire">
+                        <ul class="list-unstyled">
+                            <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                            <li><a href="#creations">Portfolio</a></li>
+                            <li><a href="#about">À propos</a></li>
+                            <li><a href="mailto:stacy.laplace64@gmail.com">Contact</a></li>
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section aria-labelledby="footer-services">
+                    <h5 id="footer-services">
+                        <i class="fas fa-star me-2" aria-hidden="true"></i>
+                        Services
+                    </h5>
+                    <ul class="list-unstyled" role="list">
+                        <li role="listitem">Maquillage artistique</li>
+                        <li role="listitem">Nail art créatif</li>
+                        <li role="listitem">Makeup événementiel</li>
+                        <li role="listitem">Formations & conseils</li>
                     </ul>
-                </div>
+                </section>
                 
-                <div>
-                    <h5><i class="fas fa-star me-2"></i>Services</h5>
-                    <ul class="list-unstyled">
-                        <li>Maquillage artistique</li>
-                        <li>Nail art créatif</li>
-                        <li>Makeup événementiel</li>
-                        <li>Formations & conseils</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h5><i class="fas fa-envelope me-2"></i>Contact</h5>
-                    <p>
-                        <i class="fas fa-envelope me-2"></i>
-                        <a href="mailto:stacy.laplace64@gmail.com">stacy.laplace64@gmail.com</a>
-                    </p>
-                    <p>
-                        <i class="fas fa-map-marker-alt me-2"></i>
-                        France
-                    </p>
-                </div>
+                <section aria-labelledby="footer-contact">
+                    <h5 id="footer-contact">
+                        <i class="fas fa-envelope me-2" aria-hidden="true"></i>
+                        Contact
+                    </h5>
+                    <address>
+                        <p>
+                            <i class="fas fa-envelope me-2" aria-hidden="true"></i>
+                            <a href="mailto:stacy.laplace64@gmail.com">stacy.laplace64@gmail.com</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt me-2" aria-hidden="true"></i>
+                            France
+                        </p>
+                    </address>
+                </section>
             </div>
             
-            <hr class="my-4" style="opacity: 0.1;">
+            <hr class="my-4" style="opacity: 0.1;" role="separator">
             
             <div class="text-center">
                 <p class="mb-0">
-                    © 2024 StacyMakeupCreations - Tous droits réservés | 
-                    Développé avec ❤️ par krismos64 | 
-                    <a href="#" class="back-to-top">
-                        <i class="fas fa-arrow-up me-1"></i>Retour en haut
+                    <span>© 2024 StacyMakeupCreations - Tous droits réservés</span> | 
+                    <span>Développé avec ❤️ par krismos64</span> | 
+                    <a href="#main-content" class="back-to-top" aria-label="Retourner en haut de la page">
+                        <i class="fas fa-arrow-up me-1" aria-hidden="true"></i>
+                        <span>Retour en haut</span>
                     </a>
                 </p>
             </div>

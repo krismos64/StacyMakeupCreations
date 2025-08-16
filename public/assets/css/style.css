@@ -44,6 +44,75 @@
   box-sizing: border-box;
 }
 
+/* === ACCESSIBILITÉ === */
+
+/* Lien d'évitement pour les lecteurs d'écran */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.sr-only-focusable:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0.5rem 1rem !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+  background: var(--accent-color) !important;
+  color: white !important;
+  text-decoration: none !important;
+  z-index: 10000 !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+}
+
+/* Focus visible amélioré */
+:focus-visible {
+  outline: 3px solid var(--accent-color) !important;
+  outline-offset: 2px !important;
+  border-radius: 2px !important;
+}
+
+/* Réduction du mouvement pour les utilisateurs sensibles */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .floating {
+    animation: none !important;
+  }
+  
+  .particle {
+    animation: none !important;
+  }
+}
+
+/* Contraste élevé */
+@media (prefers-contrast: high) {
+  :root {
+    --text-light: #ffffff;
+    --text-primary: #000000;
+    --glass-bg: rgba(0, 0, 0, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.5);
+  }
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;

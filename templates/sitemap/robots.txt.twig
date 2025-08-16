@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: {{ app.request.schemeAndHttpHost }}/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /login
+Disallow: /signin
+
+# Allow images and assets for SEO
+Allow: /uploads/
+Allow: /assets/
+
+# Crawl delay
+Crawl-delay: 1
