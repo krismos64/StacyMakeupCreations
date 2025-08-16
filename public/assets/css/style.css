@@ -1,412 +1,524 @@
-#sparkles {
-  position: absolute;
+/* ========================================
+   🎨 STACY MAKEUP CREATIONS - MODERN DESIGN
+   ======================================== */
+
+/* Variables CSS pour le thème futuriste */
+:root {
+  /* Couleurs principales */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  
+  /* Couleurs solides */
+  --primary-color: #667eea;
+  --secondary-color: #f093fb;
+  --accent-color: #4facfe;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-light: #ecf0f1;
+  --background-dark: #1a1a2e;
+  --background-light: #16213e;
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  
+  /* Animations optimisées */
+  --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Espacements */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+}
+
+/* Reset et base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--background-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background animé */
+body::before {
+  content: '';
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Ignore les événements de souris */
-  overflow: hidden;
-  z-index: 9999; /* Assurez-vous que les paillettes apparaissent au-dessus des autres éléments */
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+  animation: backgroundFlow 20s ease-in-out infinite;
+  z-index: -1;
 }
 
-.sparkle {
-  position: absolute;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.8); /* Couleur et opacité des paillettes */
-  pointer-events: none; /* Ignore les événements de souris */
+@keyframes backgroundFlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
 }
-body {
-background: linear-gradient(to right, #ffe4e1 0%, #fadadd 100%);
-font-family: 'Poppins', "Helvetica Neue", sans-serif;
-color: #333;
-}
-body, html {
-    overflow-x: hidden;
-  }  
-.container h1 {
-color: #ff69b4;
-font-size: 2.5rem;
-text-shadow: 1px 1px 2px #aaa;
-}
+
+/* Typographie moderne */
 h1, h2, h3, h4, h5, h6 {
-font-family: 'Dancing Script', cursive; 
-color: #ff69b4; 
-}
-p {
-font-family: 'Poppins', sans-serif; 
-color: #333; 
-font-size: 1.1rem;
-line-height: 1.6;
-margin: 0.5rem 0;
-}
-section p {
-color: #ff1493; /* Couleur rose vif pour les paragraphes dans les sections principales */
-font-size: 1.2rem;
-font-weight: 500;
-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Ombre légère pour mettre en évidence */
-border-left: 4px solid #ff1493; /* Bordure gauche colorée */
-padding-left: 1rem; /* Espace à gauche pour la bordure */
-background: rgba(255, 105, 180, 0.1); /* Fond léger */
-border-radius: 5px; /* Coins arrondis */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Style pour les paragraphes des créations */
-.card-text {
-color: #666; /* Couleur plus douce pour le texte des cartes */
-font-size: 1rem;
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  position: relative;
 }
-.lead {
-color: #555;
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-light);
+  opacity: 0.9;
+}
+
+/* Container moderne */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Header futuriste */
+.navbar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition-smooth);
+}
+
+.navbar.scrolled {
+  background: rgba(26, 26, 46, 0.95) !important;
+  box-shadow: var(--glass-shadow);
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  margin: 0 var(--spacing-xs);
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  transition: var(--transition-smooth);
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--accent-color) !important;
+  transform: translateY(-2px);
+}
+
+/* Boutons modernes */
+.btn {
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-bounce);
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-primary {
-background-color: #e75480; /* Rose moyen */
-border-color: #e75480;
-}
-
-.btn-primary:hover {
-background-color: #d74370; /* Rose foncé */
-border-color: #d74370;
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 .btn-secondary {
-background-color: #ffc107;
-border-color: #ffc107;
+  background: var(--secondary-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
 }
 
-.btn-secondary:hover {
-background-color: #ffca2c;
-border-color: #ffca2c;
+.btn-accent {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
 }
 
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: var(--transition-smooth);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Cards glassmorphism */
 .card {
-transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: var(--transition-smooth);
 }
 
 .card:hover {
-transform: scale(1.05);
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 .card-body {
-background-color: rgba(255, 255, 255, 0.9);
+  padding: var(--spacing-md) !important;
 }
 
-.navbar {
-background: linear-gradient(45deg, #ff69b4, #ff1493);
-background-size: 200% 200%;
-animation: gradientAnimation 5s ease infinite;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-border-bottom: 3px solid #ffca2c;
-}
-
-@keyframes gradientAnimation {
-0% {
-    background-position: 0% 50%;
-}
-50% {
-    background-position: 100% 50%;
-}
-100% {
-    background-position: 0% 50%;
-}
-}
-
-.navbar-brand {
-font-size: 1.5rem;
-font-weight: bold;
-color: #ffffff !important;
-text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-.navbar-toggler {
-border: none;
-}
-
-.navbar-toggler-icon {
-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28%255, %255, %255, 0.55%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.navbar-dark .navbar-toggler-icon {
-filter: invert(1);
-}
-
-.navbar .navbar-nav .nav-link {
-color: #ffffff !important;
-font-weight: 500;
-}
-
-.navbar .navbar-nav .nav-link:hover {
-color: #ffca2c !important;
-}
-
-.navbar-collapse {
-justify-content: flex-end;
-}
-/* Responsive styles */
-@media (max-width: 768px) {
-.navbar {
-    padding: 1rem;
-}
-.container h1 {
-    font-size: 2rem;
-}
-.card img {
-    height: auto;
-    max-height: 150px;
-}
-}
-
-@media (max-width: 576px) {
-.navbar-brand {
-    font-size: 1.2rem;
-}
-.card {
-    margin-bottom: 20px;
-}
-}
-/* Effet de zoom au survol */
-.hover-zoom {
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-zoom:hover {
-transform: scale(1.05);
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Styles de la vidéo responsive */
-.iframe-container {
-position: relative;
-overflow: hidden;
-width: 100%;
-padding-top: 56.25%; /* 16:9 Aspect Ratio */
-}
-
-.iframe-container iframe {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-border: none;
-}
-/* Assure que les images des cartes sont de la même taille */
-.card-img-top {
-object-fit: cover; /* Assure que l'image couvre le conteneur sans déformer l'image */
-width: 100%; /* Prend toute la largeur du conteneur */
-height: 200px; /* Hauteur fixe pour toutes les images */
-}
-
-/* Uniformise la hauteur des cartes */
-.card {
-display: flex;
-flex-direction: column;
-height: 100%;
-}
-
-.logo {
-max-width: 100%;
-height: auto;
-display: block;
-margin: 0 auto; /* Centre l'image horizontalement */
-}
-
-/* Styles des vignettes */
-.card {
-background-color: #fff4f4; /* Couleur de fond douce et féminine */
-border: 1px solid #f8d7da; /* Bordure subtile pour plus de contraste */
-border-radius: 10px; /* Coins arrondis pour un effet plus doux */
-overflow: hidden; /* Masquer les débordements */
-transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card:hover {
-transform: scale(1.05);
-background-color: #ffe4e1; /* Changement de couleur au survol */
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Style du texte dans les cartes */
-.card-body {
-padding: 1.5rem;
-color: #333; /* Couleur du texte */
-font-family: "Comic Sans MS", cursive, sans-serif; /* Police ludique et créative */
-}
-
-/* Style du titre de la carte */
 .card-title {
-font-size: 1.25rem;
-font-weight: bold;
-color: #ff69b4; /* Couleur rose pour le titre */
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Style du texte de la carte */
 .card-text {
-font-size: 0.875rem;
-color: #555; /* Couleur gris foncé pour une meilleure lisibilité */
+  color: var(--text-light);
+  opacity: 0.8;
+  line-height: 1.6;
 }
 
-/* Boutons sur les cartes */
-.btn-outline-secondary {
-border-color: #ff69b4;
-color: #ff69b4;
+/* Images avec effet hover */
+.card img, .creation-image {
+  border-radius: 15px;
+  transition: var(--transition-smooth);
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
-.btn-outline-secondary:hover {
-background-color: #ff69b4;
-color: #fff;
+.card:hover img, .creation-image:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1) saturate(1.2);
 }
 
-/* Effet de zoom au survol */
-.card:hover {
-transform: scale(1.05);
-transition: transform 0.3s ease-in-out;
+/* Hero section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding-top: 80px;
 }
 
-/* Assure que les images des cartes sont de la même taille */
-.card-img-top {
-object-fit: cover;
-width: 100%;
-height: 200px;
+.hero-content {
+  z-index: 2;
+  position: relative;
 }
 
-/* Styles responsives */
-@media (max-width: 768px) {
-.card-img-top {
-    height: auto;
-    max-height: 150px;
-}
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: var(--spacing-md);
+  animation: fadeInUp 1s ease-out;
 }
 
-@media (max-width: 576px) {
-.card {
-    margin-bottom: 20px;
-}
-}
-/* Style du lien "Aller en haut" */
-.float-end {
-position: relative;
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.9;
+  animation: fadeInUp 1s ease-out 0.3s both;
 }
 
-.float-end a {
-display: inline-block;
-background-color: #ff69b4; /* Couleur de fond attrayante */
-color: #fff; /* Couleur du texte */
-padding: 10px 20px;
-border-radius: 25px; /* Coins arrondis pour un effet moderne */
-text-decoration: none; /* Supprimer la décoration du texte */
-font-weight: bold;
-font-size: 1rem;
-transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-position: relative;
+.hero .btn {
+  animation: fadeInUp 1s ease-out 0.6s both;
+  margin: 0 var(--spacing-xs);
 }
 
-.float-end a:hover {
-background-color: #e75480; /* Couleur de fond au survol */
-transform: translateY(-5px); /* Légère élévation au survol */
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
-}
-
-/* Animation de pulsation */
-.float-end a::after {
-content: '';
-position: absolute;
-top: 50%;
-left: 50%;
-width: 300%;
-height: 300%;
-background: rgba(255, 105, 180, 0.3); /* Couleur de l'effet de pulsation */
-border-radius: 50%;
-transform: translate(-50%, -50%);
-transition: width 0.3s, height 0.3s, opacity 0.3s;
-opacity: 0;
-}
-
-.float-end a:hover::after {
-width: 400%;
-height: 400%;
-opacity: 1;
-}
-footer {
-background: #f8f9fa; /* Couleur de fond claire pour le footer */
-border-top: 2px solid #ff69b4; /* Bordure supérieure colorée */
-}
-
-footer p {
-margin: 0;
-color: #333; /* Couleur du texte principale */
-font-family: "Arial", sans-serif; /* Police de caractères claire */
-font-size: 1rem;
-text-align: center;
-}
-
-footer p.mb-1 {
-color: #ff69b4; /* Couleur rose pour le texte secondaire */
-font-size: 1.1rem;
-font-weight: bold;
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Ombre pour donner du relief */
-}
-
-/* Effet de survol sur le texte du footer */
-footer p.mb-1:hover {
-color: #e75480; /* Changement de couleur au survol */
-text-decoration: underline; /* Souligner le texte au survol */
-cursor: pointer;
-}
-
-/* Style pour le lien "Aller en haut" dans le footer */
-.footer .back-to-top {
-color: #ff69b4; /* Couleur du texte du lien */
-font-size: 1rem;
-text-decoration: none; /* Retirer la décoration de texte */
-font-weight: bold;
-display: inline-block;
-padding: 10px 20px;
-background: rgba(255, 105, 180, 0.2); /* Fond léger pour le lien */
-border-radius: 25px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère */
-transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.footer .back-to-top:hover {
-background-color: #ff69b4; /* Fond plus intense au survol */
-color: #fff; /* Texte en blanc au survol */
-transform: translateY(-3px); /* Légère élévation au survol */
-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
-}
-
-/* Assure que les images sont fluides et s'adaptent bien */
-.creation-image img {
-width: 100%;
-height: auto;
-max-height: 500px; /* Hauteur maximale pour éviter les images trop grandes */
-object-fit: cover;
-}
-
-/* Styles pour la vidéo responsive */
-.video-responsive {
-position: relative;
-padding-top: 56.25%; /* Aspect ratio 16:9 */
-height: 0;
-overflow: hidden;
-max-width: 100%;
-}
-
-.video-responsive iframe {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-border: 0;
-}
-
-img, iframe {
-    max-width: 100%;
-    height: auto;
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Grid des créations */
+.creations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+/* Sections */
+.section {
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+/* Footer moderne */
+.footer {
+  background: var(--dark-gradient);
+  padding: var(--spacing-lg) 0;
+  margin-top: var(--spacing-xl);
+  border-top: 1px solid var(--glass-border);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.footer h5 {
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer p, .footer a {
+  color: var(--text-light);
+  opacity: 0.8;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.footer a:hover {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+/* Particles d'arrière-plan */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particleFloat 10s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Loading spinner futuriste */
+.loading {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--glass-border);
+  border-radius: 50%;
+  border-top-color: var(--accent-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gradient);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  :root {
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+  }
+  
+  .hero {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .creations-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+  
+  .navbar-collapse {
+    background: rgba(26, 26, 46, 0.95);
+    border-radius: 10px;
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
