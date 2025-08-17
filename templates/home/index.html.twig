@@ -154,8 +154,6 @@
                                  class="creation-image" 
                                  alt="Création {{ creation.name }} - {{ creation.subtitle }} par Stacy Laplace"
                                  loading="lazy"
-                                 width="300"
-                                 height="250"
                                  itemprop="image">
                             <div class="creation-overlay" aria-hidden="true">
                                 <div class="creation-overlay-content">
@@ -315,6 +313,35 @@
     position: relative;
     overflow: hidden;
     border-radius: 15px 15px 0 0;
+    background: var(--glass-bg);
+}
+
+/* Optimisation de la qualité des images */
+.creation-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    transform: translateZ(0);
+}
+
+@media (min-width: 1200px) {
+    .creation-image {
+        aspect-ratio: 16/12;
+    }
+}
+
+/* Pour les écrans haute résolution */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .creation-image {
+        image-rendering: auto;
+    }
 }
 
 .creation-overlay {
