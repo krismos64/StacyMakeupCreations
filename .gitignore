@@ -10,6 +10,12 @@
 ###< symfony/framework-bundle ###
 
 ###> Fichiers sensibles ###
+# FICHIERS DE CREDENTIALS - NE JAMAIS COMMITER
+.env.credentials
+.env.secrets
+credentials.txt
+passwords.txt
+
 # Fichiers de backup de base de données
 *.sql
 *.sql.gz
